@@ -1,0 +1,93 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-source-serif), ui-serif, Georgia, serif;
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+}
+
+/*
+  Teal & white palette, all text pairs meet WCAG 2.2 AA (most meet AAA):
+  - foreground #0B2E2B on white          ≈ 14.9:1
+  - primary    #0F766E on white          ≈ 5.5:1  (white on primary ≈ 5.5:1)
+  - muted-fg   #3D5A57 on white / #F0FDFA ≈ 7.3:1
+  - ink        #134E4A with white text   ≈ 9.9:1
+  - accent-fg  #115E59 on #CCFBF1        ≈ 6.4:1
+*/
+:root {
+  color-scheme: light;
+  --background: #ffffff;
+  --foreground: #0b2e2b;
+  --card: #ffffff;
+  --card-foreground: #0b2e2b;
+  --popover: #ffffff;
+  --popover-foreground: #0b2e2b;
+  --primary: #0f766e;
+  --primary-foreground: #ffffff;
+  --secondary: #f0fdfa;
+  --secondary-foreground: #134e4a;
+  --muted: #f0fdfa;
+  --muted-foreground: #3d5a57;
+  --accent: #ccfbf1;
+  --accent-foreground: #115e59;
+  --destructive: #b42318;
+  --border: #99d6cf;
+  --input: #99d6cf;
+  --ring: #0f766e;
+  --ink: #134e4a;
+  --ink-foreground: #ffffff;
+  --radius: 0.625rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+  :focus-visible {
+    outline: 3px solid var(--ring);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  .on-ink :focus-visible {
+    outline-color: #ffffff;
+  }
+}
